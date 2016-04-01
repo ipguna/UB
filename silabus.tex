@@ -1,0 +1,682 @@
+\documentclass[10pt,a4paper,fullpage]{article}
+%\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+%% Alternatively
+%\usepackage{times}			% Times new roman
+%% OR: using arial
+%\renewcommand{\rmdefault}{phv} % Arial
+%\renewcommand{\sfdefault}{phv} % Arial
+%%
+%\usepackage[T1]{fontenc}
+
+\usepackage{lipsum} %package for creating dummy text
+
+%WRITTEN BY IPG
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{lastpage}
+\usepackage{polynom}
+\usepackage{supertabular}
+\usepackage{longtable}
+\usepackage{commath}
+
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{alltt}
+
+\usepackage{subfigure}
+\usepackage{epsfig}
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper,headsep=7.5mm} % or letterpaper (US) or a5paper or.... 
+\textwidth 18cm % 
+\textheight 20.5cm % 24.5cm 
+\topmargin 2.5mm % -12.5mm
+%\pdfpagewidth 8.5in
+%\pdfpageheight 11in
+\geometry{headheight=2in}
+\geometry{vmargin={1.25in,0.5in}}
+
+\usepackage{graphicx} % support the \includegraphics command and options
+\usepackage[MULTICOLUMNS,xOPTANSWER,OPTSHOW]{optional} % options: OPTISM, OPTANSWER, OPTPROBLEM, MULTICOLUMNS
+\usepackage[usenames]{color}
+\usepackage{epstopdf} 		% to be able to use eps file with graphicx using pdflatex
+\DeclareGraphicsExtensions{.jpg,.pdf,.mps,.png,.eps}
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+
+\providecommand{\tightlist}{%
+	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+
+\usepackage[pscoord]{eso-pic}% The zero point of the coordinate systemis the lower left corner of the page (the default).
+
+\newcommand{\placetextbox}[3]{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+	\setbox0=\hbox{#3}% Put <stuff> in a box
+	\AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+		\put(\LenToUnit{#1\paperwidth},\LenToUnit{#2\paperheight}){\vtop{{\null}\makebox[0pt][c]{#3}}}%
+	}%
+}%
+
+\usepackage{hyperref} 
+
+% Macro for producing horizontal line separator
+\newcommand{\linesep}{\rule{\linewidth}{0.3pt}\\}
+
+\renewcommand\thesection{\uppercase{\alph{section}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DETAILS OF THE SYLLABUS DOCUMENTS
+%
+\def\ExamType          {TAKE HOME}
+\def\ExamPeriod        {FINAL EXAMINATION}
+\def\CourseTitle       {\textsc{COURSE TITLE}}
+\def\CourseCode        {COURSE CODE}
+\def\CourseSemester    {5}
+\def\CourseSemesterType{Ganjil/Odd}
+\def\AcadYear          {2015/2016}
+
+\def\Faculty           {Engineering and Computer Science}
+\def\CourseProgramm    {Informatics}
+\def\CourseLevel       {Undergraduate (S1)}
+\def\CoursePreRequisite{}
+\def\CourseCreditTotal {2}
+\def\CourseCreditLecture{2}
+\def\CourseCreditTutor {0}
+\def\CourseCreditPract {0}
+\def\ExamDuration      {--}
+\def\DocRevision       {2.0}
+\def\DocType           {Syllabus}
+\def\CourseLecturer    {Irwan Prasetya Gunawan}
+\def\HeadOfDepartment  {Hoga Saragih}
+
+\def\ExamMaterials     {Books, Papers, Web, Matlab}
+\def\ExamTotalPage     {\pageref{LastPage}}
+\def\ExamAttachment    {--}
+\def\ExamTotalSections {2 + 1 (note)}
+\def\ExamTotalQuestions{5}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%CREATE metadata for the pdf file
+\makeatletter
+\hypersetup{
+	pdftitle={\DocType\ \CourseTitle},
+	pdfauthor={\CourseLecturer},
+	pdfsubject={\CourseTitle},
+	pdfkeywords={Informatika, Bakrie, silabus, \CourseTitle},
+	colorlinks=true,
+	citecolor=blue,
+	linkcolor=blue
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DETAILS OF THE SYLLABUS COURSE
+% COURSE DESCRIPTION
+\def\CourseDescription {Describe the course in general}
+
+% COURSE OBJECTIVE
+\def\CourseObjectives  {Upon completion of this course, the student should be able to:
+	\begin{itemize}\setlength{\parskip}{-1.0ex}
+		\item Understand the concepts 
+		\item Apply 
+		\item Have knowledge on $ \cdots $ 
+		\item etc
+	\end{itemize}
+}
+
+% COURSE Instruction
+\def\CourseInstruction {Classroom instruction consists of lectures and practical problem solving, supplemented by visual aids designed to assist the student to successfully meet the course’s learning objectives.
+
+It is imperative that students take an active interest in the course. To succeed in this course, students must read, think, and write in a critical and analytical manner and this takes time and practice. Such practice can only be achieved by working exercises. When troubles arise, and they will, the student must ask questions which may be directed to the instructor or other students in a variety of ways. 
+
+Students are also encouraged to work together on problem sets as part of their exercises. However, individual must ultimately demonstrate the understanding of the material by writing up his/her own solutions without the help of other students or their written work. 
+
+On average students need to spend, at least, 6 hours of study and preparation per week for this course.
+
+}
+
+% COURSE ATTENDANCE	
+\def\CourseAttendance  {Comply with academic rules. 
+Punctuality and regular attendance in classes is of prime importance for successful completion of this course. Students will be expected to arrive for class on time and to remain in class until the end of the class session.
+
+Absence from lectures shall not exceed 22\%. Students who exceed the 22\% limit without a medical or emergency excuse acceptable to and approved by the Dean of the Faculty shall not be allowed to take the final examination and shall receive a mark of zero for the course.
+}
+
+% COURSE ASSESSMENT
+ \def\CourseAssessment  {Coursework evaluation will be weighted as follows:
+ 	\begin{itemize}\setlength{\parskip}{-1.0ex}
+ 		\item Mid Semester Test:		30\%
+ 		\item Final Semester Test:		40\%
+ 		\item Others (class participation, Assignments/quiz/pretest):			30\%
+ 	\end{itemize}
+ }
+
+% COURSE REFERENCES
+\def\CourseReferences  {Textbooks:
+	\begin{enumerate}[label={[\arabic*]}]
+		\item Jonathan Stein, “Digital Signal Processing: A Computer Science Perspective”, John Wiley \& Sons, 2000
+		\item Steven Smith, “The Scientist and Engineer’s Guide to Digital Signal Processing”, California Technical Publishing. Downloadable at \url{http://www.dspguide.com/pdfbook.htm}
+	\end{enumerate}
+}
+
+% COURSE TOPICS SESSION 1
+\def\CourseTopicsI     {
+	\begin{minipage}[top]{0.35\textwidth}
+		Data and Statistics:
+		\begin{enumerate}[label={(\alph*)}]\setlength{\parskip}{-1ex}
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+		\end{enumerate}
+	\end{minipage}
+}
+
+% COURSE TOPICS SESSION 2
+\def\CourseTopicsII    {	
+	\begin{minipage}[top]{0.35\textwidth}
+		Data and Statistics:
+		\begin{enumerate}[label={(\alph*)}]\setlength{\parskip}{-1ex}
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+		\end{enumerate}
+	\end{minipage}
+}
+
+% COURSE TOPICS SESSION 3	
+\def\CourseTopicsIII   {	
+	\begin{minipage}[top]{0.35\textwidth}
+		Data and Statistics:
+		\begin{enumerate}[label={(\alph*)}]\setlength{\parskip}{-1ex}
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+		\end{enumerate}
+	\end{minipage}
+}
+
+% COURSE TOPICS SESSION 4	
+\def\CourseTopicsIV    {	
+	\begin{minipage}[top]{0.35\textwidth}
+		Data and Statistics:
+		\begin{enumerate}[label={(\alph*)}]\setlength{\parskip}{-1ex}
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+		\end{enumerate}
+	\end{minipage}
+}
+
+% COURSE TOPICS SESSION 5	
+\def\CourseTopicsV     {	
+	\begin{minipage}[top]{0.35\textwidth}
+		Data and Statistics:
+		\begin{enumerate}[label={(\alph*)}]\setlength{\parskip}{-1ex}
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+		\end{enumerate}
+	\end{minipage}
+}
+
+% COURSE TOPICS SESSION 6	
+\def\CourseTopicsVI    {	
+	\begin{minipage}[top]{0.35\textwidth}
+		Data and Statistics:
+		\begin{enumerate}[label={(\alph*)}]\setlength{\parskip}{-1ex}
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+		\end{enumerate}
+	\end{minipage}
+}
+
+% COURSE TOPICS SESSION 7	
+\def\CourseTopicsVII   {	
+	\begin{minipage}[top]{0.35\textwidth}
+		Data and Statistics:
+		\begin{enumerate}[label={(\alph*)}]\setlength{\parskip}{-1ex}
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+		\end{enumerate}
+	\end{minipage}
+}
+
+% COURSE TOPICS SESSION 8	
+\def\CourseTopicsVIII  {	
+	\begin{minipage}[top]{0.35\textwidth}
+		Data and Statistics:
+		\begin{enumerate}[label={(\alph*)}]\setlength{\parskip}{-1ex}
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+		\end{enumerate}
+	\end{minipage}
+}
+
+% COURSE TOPICS SESSION 9	
+\def\CourseTopicsIX    {	
+	\begin{minipage}[top]{0.35\textwidth}
+		Data and Statistics:
+		\begin{enumerate}[label={(\alph*)}]\setlength{\parskip}{-1ex}
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+		\end{enumerate}
+	\end{minipage}
+}
+
+% COURSE TOPICS SESSION 10	
+\def\CourseTopicsX     {	
+	\begin{minipage}[top]{0.35\textwidth}
+		Data and Statistics:
+		\begin{enumerate}[label={(\alph*)}]\setlength{\parskip}{-1ex}
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+		\end{enumerate}
+	\end{minipage}
+}
+
+% COURSE TOPICS SESSION 11	
+\def\CourseTopicsXI    {	
+	\begin{minipage}[top]{0.35\textwidth}
+		Data and Statistics:
+		\begin{enumerate}[label={(\alph*)}]\setlength{\parskip}{-1ex}
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+		\end{enumerate}
+	\end{minipage}
+}
+
+% COURSE TOPICS SESSION 12	
+\def\CourseTopicsXII   {	
+	\begin{minipage}[top]{0.35\textwidth}
+		Data and Statistics:
+		\begin{enumerate}[label={(\alph*)}]\setlength{\parskip}{-1ex}
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+		\end{enumerate}
+	\end{minipage}
+}
+
+% COURSE TOPICS SESSION 13	
+\def\CourseTopicsXIII  {	
+	\begin{minipage}[top]{0.35\textwidth}
+		Data and Statistics:
+		\begin{enumerate}[label={(\alph*)}]\setlength{\parskip}{-1ex}
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+		\end{enumerate}
+	\end{minipage}
+}
+
+% COURSE TOPICS SESSION 14	
+\def\CourseTopicsXIV    {	
+	\begin{minipage}[top]{0.35\textwidth}
+		Data and Statistics:
+		\begin{enumerate}[label={(\alph*)}]\setlength{\parskip}{-1ex}
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+			\item Subtopics
+		\end{enumerate}
+	\end{minipage}
+}
+
+% COURSE METHODS OF DELIVERY
+\def\CourseDeliveryI     {Lecture, Discussion, Quiz}
+\def\CourseDeliveryII    {Lecture, Discussion, Quiz}
+\def\CourseDeliveryIII   {Lecture, Discussion, Quiz}
+\def\CourseDeliveryIV    {Lecture, Discussion, Quiz}
+\def\CourseDeliveryV     {Lecture, Discussion, Quiz}
+\def\CourseDeliveryVI    {Lecture, Discussion, Quiz}
+\def\CourseDeliveryVII   {Lecture, Discussion, Quiz}
+\def\CourseDeliveryVIII  {Lecture, Discussion, Quiz}
+\def\CourseDeliveryIX    {Lecture, Discussion, Quiz}
+\def\CourseDeliveryX     {Lecture, Discussion, Quiz}
+\def\CourseDeliveryXI    {Lecture, Discussion, Quiz}
+\def\CourseDeliveryXII   {Lecture, Discussion, Quiz}
+\def\CourseDeliveryXIII  {Lecture, Discussion, Quiz}
+\def\CourseDeliveryXIV    {Lecture, Discussion, Quiz}
+
+% COURSE REFERENCES PER SESSION
+\def\CourseReferenceI     {Chapter 1, pp. 1-20}
+\def\CourseReferenceII    {Chapter 1, pp. 1-20}
+\def\CourseReferenceIII   {Chapter 1, pp. 1-20}
+\def\CourseReferenceIV    {Chapter 1, pp. 1-20}
+\def\CourseReferenceV     {Chapter 1, pp. 1-20}
+\def\CourseReferenceVI    {Chapter 1, pp. 1-20}
+\def\CourseReferenceVII   {Chapter 1, pp. 1-20}
+\def\CourseReferenceVIII  {Chapter 1, pp. 1-20}
+\def\CourseReferenceIX    {Chapter 1, pp. 1-20}
+\def\CourseReferenceX     {Chapter 1, pp. 1-20}
+\def\CourseReferenceXI    {Chapter 1, pp. 1-20}
+\def\CourseReferenceXII   {Chapter 1, pp. 1-20}
+\def\CourseReferenceXIII  {Chapter 1, pp. 1-20}
+\def\CourseReferenceXIV    {Chapter 1, pp. 1-20}
+
+% COURSE ASSIGNMENT
+\def\CourseAssignmentI     {Probs: 2, 3, 4, 5, 6, 7}
+\def\CourseAssignmentII    {Probs: 2, 3, 4, 5, 6, 7}
+\def\CourseAssignmentIII   {Probs: 2, 3, 4, 5, 6, 7}
+\def\CourseAssignmentIV    {Probs: 2, 3, 4, 5, 6, 7}
+\def\CourseAssignmentV     {Probs: 2, 3, 4, 5, 6, 7}
+\def\CourseAssignmentVI    {Probs: 2, 3, 4, 5, 6, 7}
+\def\CourseAssignmentVII   {Probs: 2, 3, 4, 5, 6, 7}
+\def\CourseAssignmentVIII  {Probs: 2, 3, 4, 5, 6, 7}
+\def\CourseAssignmentIX    {Probs: 2, 3, 4, 5, 6, 7}
+\def\CourseAssignmentX     {Probs: 2, 3, 4, 5, 6, 7}
+\def\CourseAssignmentXI    {Probs: 2, 3, 4, 5, 6, 7}
+\def\CourseAssignmentXII   {Probs: 2, 3, 4, 5, 6, 7}
+\def\CourseAssignmentXIII  {Probs: 2, 3, 4, 5, 6, 7}
+\def\CourseAssignmentXIV    {Probs: 2, 3, 4, 5, 6, 7}
+
+
+% HEADER
+
+\def\TableHeader{
+	\placetextbox{0.5}{0.96}{
+	\framebox[\textwidth]{
+	\begin{minipage}[bottom]{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.75]{UBCrestHorizontal} \\
+		\Large\DocType\ -- \CourseTitle
+	\end{minipage}
+	}
+	}
+}
+
+\def\HeaderRight{
+	\begin{minipage}[bottom]{0.25\textwidth}
+		\raggedleft
+		\vfill
+		\CourseCode\\
+		Page \thepage/\pageref{LastPage}
+	\end{minipage}
+}
+
+%DOCUMENT DETAILS
+
+\newcommand{\detailcoursesize}{\footnotesize}
+% DOCUMENT DETAIL COURSE CODE
+\def\DocDetailCourseCode{
+	\begin{minipage}[b]{0.45\textwidth}
+		\raggedright
+		\detailcoursesize
+		\textbf{Kode Mata Kuliah} (\textit{Course Code}):\\
+		\textbf{\CourseCode}\\
+	\end{minipage}
+}
+% DOCUMENT DETAIL COURSE NAME
+\def\DocDetailCourseName{
+	\begin{minipage}[b]{0.45\textwidth}
+		\raggedright
+		\detailcoursesize
+		\textbf{Nama Mata Kuliah} (\textit{Course Name}):\\
+		\textbf{\CourseTitle}\\
+	\end{minipage}
+}
+% DOCUMENT DETAIL STUDY PROGRAM
+\def\DocDetailProgram{
+	\begin{minipage}[b]{0.45\textwidth}
+		\raggedright
+		\detailcoursesize
+		\textbf{Program Studi} (\textit{Study Program}):\\
+		\textbf{\CourseProgramm}\\
+	\end{minipage}
+}
+% DOCUMENT DETAIL FACULTY
+\def\DocDetailFaculty{
+	\begin{minipage}[b]{0.45\textwidth}
+		\raggedright
+		\detailcoursesize
+		\textbf{Fakultas} (\textit{Faculty}):\\
+		\textbf{\Faculty}\\
+	\end{minipage}
+}
+% DOCUMENT DETAIL COURSE PRE-REQUISITE
+\def\DocDetailCoursePreReq{
+	\begin{minipage}[t]{0.5\textwidth}
+		\raggedright
+		\detailcoursesize
+		\textbf{Mata Kuliah Pra-Syarat} (\textit{Course Pre-requisite}):\\
+		\textbf{\CoursePreRequisite}\\
+	\end{minipage}
+}
+% DOCUMENT DETAIL COURSE CREDIT TOTAL
+\def\DocDetailCourseCreditTotal{
+	\begin{minipage}[t]{0.45\textwidth}
+		\raggedright
+		\detailcoursesize
+		\textbf{Kredit} (\textit{Credit}): %\\
+		\textbf{\CourseCreditTotal}\\
+	\end{minipage}
+}
+% DOCUMENT DETAIL COURSE CREDIT LECTURE
+\def\DocDetailCourseCreditLecture{
+	\begin{minipage}[t]{0.15\textwidth}
+		\raggedright
+		\detailcoursesize
+		\textbf{Kuliah} (\textit{Lecture}):\\
+		\textbf{\CourseCreditLecture}\\
+	\end{minipage}
+}
+% DOCUMENT DETAIL COURSE CREDIT TUTORIAL
+\def\DocDetailCourseCreditTutorial{
+	\begin{minipage}[t]{0.15\textwidth}
+		\raggedright
+		\detailcoursesize
+		\textbf{Tutorial}:\\
+		\textbf{\CourseCreditTutor}\\
+	\end{minipage}
+}
+% DOCUMENT DETAIL COURSE CREDIT PRACTICE
+\def\DocDetailCourseCreditPractice{
+	\begin{minipage}[t]{0.125\textwidth}
+		\raggedright
+		\detailcoursesize
+		\textbf{Praktikum} (\textit{Practicum}):\\
+		\textbf{\CourseCreditPract}\\
+	\end{minipage}
+}
+% DOCUMENT DETAIL REVISION NUMBER
+\def\DocDetailRevision{
+	\begin{minipage}[t]{0.45\textwidth}
+		\raggedright
+		\detailcoursesize
+		\textbf{Revisi} (\textit{Revision Status}):\\
+		\textbf{\DocRevision}\\
+	\end{minipage}
+}
+% DOCUMENT DETAIL SEMESTER TYPE
+\def\DocDetailSemesterType{
+	\begin{minipage}[t]{0.45\textwidth}
+		\raggedright
+		\detailcoursesize
+		\textbf{Semester}: \CourseSemesterType \\
+		\textbf{Tahun Akademik}: \AcadYear \\
+	\end{minipage}
+}
+% DOCUMENT DETAIL INSTRUCTOR
+\def\DocDetailInstructor{
+	\begin{minipage}[t]{0.45\textwidth}
+		\raggedright
+		\detailcoursesize
+		\textbf{Lecturer's Name}:\\
+		{\CourseLecturer}
+	\end{minipage}
+}
+
+% CREATE DOCUMENT DETAIL
+\def\GeneralDocDetails{
+\begin{center}
+	\begin{tabular}{|p{0.45\textwidth}  p{0.15\textwidth} |  p{0.15\textwidth} |  p{0.13\textwidth} |}
+		\hline \rule[-0ex]{-1.5ex}{4.5ex} \DocDetailCourseCode  & \multicolumn{3}{|l|}{\DocDetailCourseName}  \\ 
+		\hline 
+		
+		\hline \rule[-0ex]{-1.5ex}{4.5ex} \DocDetailProgram  & \multicolumn{3}{|l|}{\DocDetailFaculty}  \\ 
+		\hline 
+		
+		\hline \rule[-2ex]{-1.5ex}{4ex} \multirow{2}{*}{\raggedbottom \DocDetailCoursePreReq}  & \multicolumn{3}{|l|}{\DocDetailCourseCreditTotal}  \\ 
+		\cline{2-4} \rule[-6ex]{0pt}{9ex}  & \multicolumn{1}{|l|}{\DocDetailCourseCreditLecture} & \DocDetailCourseCreditTutorial & \DocDetailCourseCreditPractice \\ 
+		
+		\hline \rule[-4ex]{-1.5ex}{6.5ex} \DocDetailRevision  & \multicolumn{3}{|l|}{\DocDetailSemesterType}  \\ 
+		\hline 
+		
+		\hline \rule[-2ex]{-1.5ex}{5ex} {\DocDetailInstructor} & \multicolumn{3}{l|}{ }  \\ 
+		\hline 
+		\hline 
+	\end{tabular} 
+\end{center}
+}
+
+% TABLE FOR COURSE OUTLINE
+\def\TabelCourseOutline{
+\begin{center}\scriptsize
+	\begin{longtable}{| l | p{0.35\textwidth} | p{0.15\textwidth} | p{0.15\textwidth} | p{0.15\textwidth} | }
+		\hline 
+		\rule[-1ex]{-1.5ex}{4.5ex} {\raggedright \textbf{Session}}  & \textbf{Topics \& Sub-Topics} & \textbf{Methods} & \textbf{References} & \textbf{Assignment}  \\\hline 
+		
+		\rule[-4ex]{-1.5ex}{15ex} 1  & \CourseTopicsI & \parbox[top]{0.15\textwidth}{\raggedright\CourseDeliveryI} & \parbox[top]{0.15\textwidth}{\raggedright\CourseReferenceI} & \parbox[top]{0.15\textwidth}{\raggedright\CourseAssignmentI}  \\\hline 
+		\rule[-1ex]{-1.5ex}{15ex} 2  & \CourseTopicsII & \parbox[top]{0.15\textwidth}{\raggedright\CourseDeliveryII} & \parbox[top]{0.15\textwidth}{\raggedright\CourseReferenceII} & \parbox[top]{0.15\textwidth}{\raggedright\CourseAssignmentII}  \\\hline 
+		\rule[-4ex]{-1.5ex}{15ex} 3  & \CourseTopicsIII & \parbox[top]{0.15\textwidth}{\raggedright\CourseDeliveryIII} & \parbox[top]{0.15\textwidth}{\raggedright\CourseReferenceIII} & \parbox[top]{0.15\textwidth}{\raggedright\CourseAssignmentIII}  \\\hline 
+		\rule[-4ex]{-1.5ex}{15ex} 4  & \CourseTopicsIV & \parbox[top]{0.15\textwidth}{\raggedright\CourseDeliveryIV} & \parbox[top]{0.15\textwidth}{\raggedright\CourseReferenceIV} & \parbox[top]{0.15\textwidth}{\raggedright\CourseAssignmentIV}  \\\hline 
+		\rule[-4ex]{-1.5ex}{15ex} 5  & \CourseTopicsV & \parbox[top]{0.15\textwidth}{\raggedright\CourseDeliveryV} & \parbox[top]{0.15\textwidth}{\raggedright\CourseReferenceV} & \parbox[top]{0.15\textwidth}{\raggedright\CourseAssignmentV}  \\\hline 
+		\rule[-4ex]{-1.5ex}{15ex} 6  & \CourseTopicsVI & \parbox[top]{0.15\textwidth}{\raggedright\CourseDeliveryVI} & \parbox[top]{0.15\textwidth}{\raggedright\CourseReferenceVI} & \parbox[top]{0.15\textwidth}{\raggedright\CourseAssignmentVI}  \\\hline 
+		\rule[-4ex]{-1.5ex}{15ex} 7  & \CourseTopicsVII & \parbox[top]{0.15\textwidth}{\raggedright\CourseDeliveryVII} & \parbox[top]{0.15\textwidth}{\raggedright\CourseReferenceVII} & \parbox[top]{0.15\textwidth}{\raggedright\CourseAssignmentVII}  \\\hline 
+%
+		 \multicolumn{5}{|c|}{\rule[-1ex]{-1.5ex}{5ex} \textbf{MID SEMESTER TEST}} \\\hline
+%
+		\rule[-4ex]{-1.5ex}{15ex} 8  & \CourseTopicsVIII & \parbox[top]{0.15\textwidth}{\raggedright\CourseDeliveryVIII} & \parbox[top]{0.15\textwidth}{\raggedright\CourseReferenceVIII} & \parbox[top]{0.15\textwidth}{\raggedright\CourseAssignmentVIII}  \\\hline 
+		\rule[-4ex]{-1.5ex}{15ex} 9  & \CourseTopicsIX & \parbox[top]{0.15\textwidth}{\raggedright\CourseDeliveryIX} & \parbox[top]{0.15\textwidth}{\raggedright\CourseReferenceIX} & \parbox[top]{0.15\textwidth}{\raggedright\CourseAssignmentIX}  \\\hline 
+		\rule[-4ex]{-1.5ex}{15ex} 10  & \CourseTopicsX & \parbox[top]{0.15\textwidth}{\raggedright\CourseDeliveryX} & \parbox[top]{0.15\textwidth}{\raggedright\CourseReferenceX} & \parbox[top]{0.15\textwidth}{\raggedright\CourseAssignmentX}  \\\hline 
+		\rule[-4ex]{-1.5ex}{15ex} 11 & \CourseTopicsXI & \parbox[top]{0.15\textwidth}{\raggedright\CourseDeliveryXI} & \parbox[top]{0.15\textwidth}{\raggedright\CourseReferenceXI} & \parbox[top]{0.15\textwidth}{\raggedright\CourseAssignmentXI}  \\\hline 
+		\rule[-4ex]{-1.5ex}{15ex} 12  & \CourseTopicsXII & \parbox[top]{0.15\textwidth}{\raggedright\CourseDeliveryXII} & \parbox[top]{0.15\textwidth}{\raggedright\CourseReferenceXII} & \parbox[top]{0.15\textwidth}{\raggedright\CourseAssignmentXII } \\\hline 
+		\rule[-4ex]{-1.5ex}{15ex} 13 & \CourseTopicsXIII & \parbox[top]{0.15\textwidth}{\raggedright\CourseDeliveryXIII} & \parbox[top]{0.15\textwidth}{\raggedright\CourseReferenceXIII} & \parbox[top]{0.15\textwidth}{\raggedright\CourseAssignmentXIII}  \\\hline 
+		\rule[-4ex]{-1.5ex}{15ex} 14 & \CourseTopicsXIV & \parbox[top]{0.15\textwidth}{\raggedright\CourseDeliveryXIV} & \parbox[top]{0.15\textwidth}{\raggedright\CourseReferenceXIV} & \parbox[top]{0.15\textwidth}{\raggedright\CourseAssignmentXIV}  \\\hline 
+%
+		 \multicolumn{5}{|c|}{\rule[-1ex]{-1.5ex}{5ex} \textbf{FINAL SEMESTER TEST}} \\\hline
+
+	\end{longtable}
+\end{center}	
+}
+
+% TABLE FOR DOCUMENT CONTROL
+\def\DocumentControl{
+	\begin{minipage}{\textwidth}
+		\begin{center}
+			\begin{tabular}{ l p{0.1\textwidth}  p{0.35\textwidth}  p{0.1\textwidth} p{0.35\textwidth} }
+%				\rule[-2ex]{0pt}{8.5ex} \multicolumn{2}{l}{Prepared by:}  & \multicolumn{2}{l}{Certified by:}  \\ 
+				
+				\rule[-1ex]{0pt}{2.5ex} & \multicolumn{2}{l}{Prepared by:}  & \multicolumn{2}{l}{Certified by:} \\ 
+				
+				\rule[-1ex]{0pt}{2.5ex} & Name: & \CourseLecturer & Name: &  \HeadOfDepartment  \\ 
+				
+				\rule[-1ex]{0pt}{2.5ex} &Position: & Lecturer & Position: & Head of Department  \\ 
+				
+				\rule[-1ex]{0pt}{2.5ex} & Date: & \today & Date &   \\ 
+			\end{tabular} 
+		\end{center}
+		
+	\end{minipage}
+}
+
+
+\makeatletter
+\renewcommand\section{%
+	\@startsection{section}{1}{\z@}
+	{-3.25ex \@plus -2ex \@minus -.2ex}%
+	{1em \@plus-.2ex}
+	{\normalfont\scshape\normalsize\bfseries}}
+\makeatother
+
+\lhead{}\chead{\TableHeader}\rhead{\HeaderRight}
+\lfoot{}\cfoot{}\rfoot{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\GeneralDocDetails
+
+%MAIN MATTER
+
+
+\section{COURSE DESCRIPTION}\label{course-description}
+\vspace{-4ex}\linesep
+\CourseDescription
+
+\section{COURSE OBJECTIVES}\label{course-objectives}
+\vspace{-4ex}\linesep
+\CourseObjectives
+
+\section{METHODS OF INSTRUCTIONS}\label{course-instructions}
+\vspace{-4ex}\linesep
+\CourseInstruction
+
+\section{ATTENDANCE REQUIREMENT}\label{course-attendance}
+\vspace{-4ex}\linesep
+\CourseAttendance
+
+\section{ASSESSMENT}\label{course-assessment}
+\vspace{-4ex}\linesep
+\CourseAssessment
+
+\section{MATERIAL REFERENCES AND REQUIRED SUPPLIES}\label{course-refs}
+\vspace{-4ex}\linesep
+\CourseReferences
+
+
+\section{COURSE OUTLINE}\label{course-outline}
+\vspace{-4ex}\linesep
+\TabelCourseOutline
+
+
+\vfill
+\DocumentControl
+
+
+
+
+\end{document}
