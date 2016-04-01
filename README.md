@@ -12,10 +12,15 @@ Samples pdf files:
 - Syllabus_Calculus_02_v02.pdf : syllabus file for Calculus 02 course @UB Informatics
 
 For *nix based, the pdf file can be created from the terminal in one of several ways:
+
 - using "make" facility by typing
+
   >> make
+
 - typing the latex command directly 
+
   >> pdflatex -synctex=1 -interaction=nonstopmode silabus
+
 - use the LaTeX IDE (the same ones used in Windows-based environment below)
 
 For Windows-based, you can use a LaTeX environment using MikTeX (for the LaTeX engine) and virtually any text editor. Recommended IDE for Windows-based LaTeX environment is TexMaker, TexShop, or TexStudio. Use the facility in the IDE to process the LaTeX file template to create the pdf file.
